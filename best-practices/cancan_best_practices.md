@@ -2,8 +2,7 @@ CanCan Best Practices
 =====================
 
 <dl>
-  <strong>can·can</strong>
-  /ˈkanˌkan/
+  <strong>can·can</strong> &nbsp; &nbsp; &nbsp; &nbsp; /ˈkanˌkan/
   <br/>
   Noun:
   <dd>
