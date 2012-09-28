@@ -174,7 +174,23 @@ Testing Abilities
 Multiple rules for the same action and subject
 ----------------------------------------------
 
-* Abilities will be `OR`ed together.
+* It is possible to define multiple abilities for the same resource. Here the user
+  will be able to read projects which are released OR available for preview.
+
+  ```ruby
+  can :read, Project, released: true
+  can :read, Project, preview: true
+  ```
+
+  The `cannot` method takes the same arguments as `can` and defines which actions
+  the user is unable to perform. This is normally done after a more generic `can`
+  call.
+
+  ```ruby
+  can :manage, Project
+  cannot :destroy, Project
+  ```
+
 * Be aware of [ability precedence](https://github.com/ryanb/cancan/wiki/Ability-Precedence).
 
 
