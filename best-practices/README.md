@@ -177,6 +177,8 @@ JavaScript
 ----------
 
 * Use CoffeeScript.
+* Include a `to_param` or `href` attribute when serializing ActiveRecord models,
+  and use that when constructing URLs client side, rather than the ID.
 
 HTML
 ----
