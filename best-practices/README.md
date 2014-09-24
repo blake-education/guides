@@ -178,7 +178,22 @@ JavaScript
 
 * Use CoffeeScript.
 * Include a `to_param` or `href` attribute when serializing ActiveRecord models,
-  and use that when constructing URLs client side, rather than the ID.
+  and use that when constructing URLs client side, rather than the ID. Example:
+
+  ```ruby
+  class PostSerializer < ActiveModel::Serializer
+    attributes :id, :content, :to_param
+
+    delegate :to_param, to: :object
+  end
+  ```
+
+  ```handlebars
+  <!-- Good -->
+  <a href="/posts/{{ post.toParam }}">
+  <!-- Bad -->
+  <a href="/posts/{{ post.id }}">
+  ```
 
 HTML
 ----
