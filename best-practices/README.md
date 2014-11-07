@@ -272,9 +272,24 @@ Haskell
 
 Ember
 -----
+
 * Avoid using `$` without scoping to `this.$` in views and components.
 * Prefer to make model lookup calls in routes instead of controllers (`find`,
   `findAll`, etc.).
 * Prefer adding properties to controllers instead of models.
 * Don't use jQuery outside of views and components.
 * Prefer to use predefined `Ember.computed.*` functions when possible.
+
+Angular
+-------
+
+* [Avoid manual dependency annotations][annotations]. Disable mangling or use a
+  pre-processor for annotations.
+* Prefer `factory` to `service`. If you desire a singleton, call `new` on what
+  your factory returns.
+* Prefer the `translate` directive to the `translate` filter for [performance
+  reasons][angular-translate].
+* Don't use the `jQuery` or `$` global. Access jQuery via `angular.element`.
+
+[annotations]: http://robots.thoughtbot.com/avoid-angularjs-dependency-annotation-with-rails
+[angular-translate]: https://github.com/angular-translate/angular-translate/wiki/Getting-Started#using-translate-directive
