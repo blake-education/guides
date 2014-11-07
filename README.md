@@ -16,7 +16,6 @@ High level guidelines:
 
 * Be consistent.
 * Don't rewrite existing code to follow this guide.
-* Only follow a guideline if you understand it.
 * Don't violate a guideline without a good reason.
 * A reason is good when you can convince a teammate.
 
