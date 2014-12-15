@@ -8,6 +8,7 @@ Contents
 
 1. [Service Objects](#service-objects)
 1. [Workflow Objects](#workflow-objects)
+1. [Query Objects](#query-objects)
 
 Service Objects
 ---------------
@@ -105,3 +106,60 @@ module Workflow
 end
 
 ```
+
+Query Objects
+-------------
+
+Objects that provide a query interface, usually including business rules.
+
+Query classes:
+
+* Live in `app/queries/query/`
+* Named like `Query::MaybeSomeContext::Descriptor`, e.g. `Query::Subscription::TeacherTrials`
+* Provide a method that returns a base scope, as well as possibly a number of chainable scope methods and/or methods that return values
+* May be initialized with zero, one, or many objects or base scopes, e.g:
+  * a school to query teachers for that school
+  * a date to find subscriptions that expire on that date
+  * an ActiveRecord::Relation to scope add mode scopes to
+  * Some combination of these
+* It may be prudent to ignore rules of DRY in some circumstances, e.g. reimplementing a scope that already exists on a model, so it is clear how it's specified *in the context of this query*, even if it may be the same as that on the model (for the time being)
+
+Example:
+
+```ruby
+module Query
+  module Subscription
+    module TeacherTrials
+      # Provides the base set of teacher trials, with the scopes providing further specificity
+      def subscriptions
+        # We use the school flag for teacher trials
+        ::Subscription.school.is_trial.not_deprecated.extending(Scopes)
+      end
+      module_function :subscriptions
+
+      module Scopes
+        def product(product)
+          where(subscription_type: product)
+        end
+
+        def default(product)
+          product(product).merge(::Subscription.default).first
+        end
+      end
+    end
+  end
+end
+```
+
+Note that it is necessary to use the provided scopes in the context of an existing `Query::Subscription::TeacherTrials.subscriptions` instance, e.g.:
+
+```ruby
+teacher_trials  = ::Query::Subscription::TeacherTrials.subscriptions
+reading_default = teacher_trials.default(:reading)
+wf_trials       = teacher_trials.product(:wf)
+```
+
+Resources:
+* [Turn simple with Query Objects](http://helabs.com.br/blog/2014/01/18/turn-simple-with-query-objects/) - Excellent example of Query objects with scopes
+* [Code Climate Blog - 7 Patterns to Refactor Fat ActiveRecord Models - 4. Extract Query Objects](http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/#query-objects)
+
