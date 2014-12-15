@@ -130,8 +130,6 @@ Example:
 module Query
   module Subscription
     module TeacherTrials
-      extend self
-
       # Provides the base set of teacher trials, with the scopes providing further specificity
       #
       # Usage:
@@ -142,6 +140,7 @@ module Query
         # We use the school flag for teacher trials
         ::Subscription.school.is_trial.not_deprecated.extending(Scopes)
       end
+      module_function :subscriptions
 
       module Scopes
         def product(product)
