@@ -131,11 +131,6 @@ module Query
   module Subscription
     module TeacherTrials
       # Provides the base set of teacher trials, with the scopes providing further specificity
-      #
-      # Usage:
-      #   teacher_trials  = ::Query::Subscription::TeacherTrials.subscriptions
-      #   reading_default = teacher_trials.default(:reading)
-      #   wf_trials       = teacher_trials.product(:wf)
       def subscriptions
         # We use the school flag for teacher trials
         ::Subscription.school.is_trial.not_deprecated.extending(Scopes)
@@ -156,7 +151,13 @@ module Query
 end
 ```
 
-Note that it is necessary to use the provided scopes in the context of an existing `Query::Subscription::TeacherTrials.subscriptions` instance.
+Note that it is necessary to use the provided scopes in the context of an existing `Query::Subscription::TeacherTrials.subscriptions` instance, e.g.:
+
+```ruby
+teacher_trials  = ::Query::Subscription::TeacherTrials.subscriptions
+reading_default = teacher_trials.default(:reading)
+wf_trials       = teacher_trials.product(:wf)
+```
 
 Resources:
 * [Turn simple with Query Objects](http://helabs.com.br/blog/2014/01/18/turn-simple-with-query-objects/) - Excellent example of Query objects with scopes
