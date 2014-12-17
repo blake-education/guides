@@ -57,6 +57,7 @@ end
 Resources:
 * [Code Climate Blog - 7 Patterns to Refactor Fat ActiveRecord Models - 2. Extract Service Objects](http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/#service-objects)
 * [brewhouse blog - Gourmet Service Objects](http://brewhouse.io/blog/2014/04/30/gourmet-service-objects.html)
+* [What service objects are not - An opinionated guide to Service Objects](https://medium.com/@KamilLelonek/what-service-objects-are-not-7abef8aa2f99)
 
 Workflow Objects
 ----------------
