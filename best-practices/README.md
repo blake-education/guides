@@ -104,11 +104,18 @@ Rails
 Testing
 -------
 
+(See also the rspec style guide that appears in this section)
+
+* First #describe what you are doing.
+* Then establish the #context.
+* #it only expects one thing (within reason).
+* Prefer explicitness - #it #its #specify #subject are nice shortcuts but
+consider whether they are sacrificing readability.
 * Avoid `any_instance` in rspec-mocks and mocha. Prefer [dependency injection].
-* Avoid `its`, `let`, `let!`, `specify`, `before`, and `subject` in RSpec.
 * Avoid using instance variables in tests.
 * Disable real HTTP requests to external services with
-  `WebMock.disable_net_connect!`.
+`WebMock.disable_net_connect!`. Use vcr if you need to create a fixture with real-life
+requests and responses from an external service.
 * Don't test private methods.
 * Test background jobs with a [`Delayed::Job` matcher].
 * Use [stubs and spies] \(not mocks\) in isolated tests.
