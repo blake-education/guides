@@ -20,11 +20,11 @@ purpose of smoke testing key features of the site
 
 For specifics on what to do and what not to do along with excellent examples, see:
 
-[betterspecs.org]: http://betterspecs.org/
-[pcreux's tips and tricks]: http://eggsonbread.com/2010/03/28/my-rspec-best-practices-and-tips/
-[carbon five's rspec best practices]: http://blog.carbonfive.com/2010/10/21/rspec-best-practices/
+- [betterspecs.org](http://betterspecs.org/)
+- [pcreux's tips and tricks](http://eggsonbread.com/2010/03/28/my-rspec-best-practices-and-tips/)
+- [carbon five's rspec best practices](http://blog.carbonfive.com/2010/10/21/rspec-best-practices/)
 
 In depth articles on mocks, stubs, doubles and when to use what:
 
-[myron marston on mocking]: http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking
-[martin fowler on mocks and stubs]: http://martinfowler.com/articles/mocksArentStubs.html
+- [Myron Marston on mocking](http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking)
+- [Martin Fowler on mocks and stubs](http://martinfowler.com/articles/mocksArentStubs.html)
